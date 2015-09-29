@@ -36,11 +36,11 @@ def make_chains(text_string):
         second_word = all_words[i+1]
         following_word = all_words[i+2]
 
-        if chains.get((first_word, second_word)) is not None:
-            chains[(first_word, second_word)].append(following_word)
-        else:
+        if chains.get((first_word, second_word)) is None:
             chains[(first_word, second_word)] = [following_word]
-    print chains
+        else:
+            chains[(first_word, second_word)].append(following_word)
+
     return chains
 
 
@@ -49,12 +49,18 @@ def make_text(chains):
 
     text = ""
 
-    # your code goes here
+    #randomly choose a key from chains
+    new_key = choice(chains.keys())
+
+    while chains.get(new_key) is not None:
+        next_word = choice(chains[new_key])
+        text += new_key[0] + " " + new_key[1] + " " + next_word + " "
+        new_key = (new_key[1], next_word)
 
     return text
 
 
-input_path = "green-eggs.txt"
+input_path = "gettysburg.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
