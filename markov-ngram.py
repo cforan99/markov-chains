@@ -38,12 +38,18 @@ def make_chains(text_string):
     key = ()
     for word in all_words:
         for i in range(n):
-            print all_words[i]
             key += (all_words[i],)
-            print key,"IAMA KEY"
         
+        if chains.get(key) is None:
+            chains[key] = [all_words[n]]
+        else:
+            chains[key].append(all_words[n])
+
         del all_words[0]
         key = ()
+
+    return chains
+
 
     # for i in word_count:
     #     first_word = all_words[i] 
