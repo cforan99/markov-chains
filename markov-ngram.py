@@ -1,7 +1,7 @@
 import sys
 from random import choice, randint
 
-filename = sys.argv[1]  
+filename = "green-eggs.txt"
 
 def open_and_read_file(filename):
     """Takes file path as string; returns text as string.
@@ -34,25 +34,31 @@ def make_chains(text_string):
     all_words = text_string.split()
 
     n = randint(1,9)
-    word_count = range(len(all_words)-(n+1))
-    count = {}
-    i = 1
+    print n,"I AM NNNNNNNNNNNNNN"
+    key = ()
+    for word in all_words:
+        for i in range(n):
+            print all_words[i]
+            key += (all_words[i],)
+            print key,"IAMA KEY"
+        
+        del all_words[0]
+        key = ()
 
-    while n > 0:
-        count[n] = i
-        n -= 1 
-        i += 1
+    # for i in word_count:
+    #     first_word = all_words[i] 
+    #     second_word = all_words[i+1]
+    #     following_word = all_words[i+2]
 
-    for i in word_count:
-        first_word = all_words[i]
-        second_word = all_words[i+1]
-        following_word = all_words[i+2]
+    #     n_word all_words[n]
+    #     word_9
+    #     word_8
 
-        if chains.get((all_words[i], all_words[i+1])) is None:
-            chains[(all_words[i], all_words[i+1])] = [all_words[i+2]]
-        else:
-            chains[(all_words[i], all_words[i+1])].append(all_words[i+2])
-    return chains
+    #     if chains.get((all_words[i], all_words[i+1])) is None:
+    #         chains[(all_words[i], all_words[i+1])] = [all_words[i+2]]
+    #     else:
+    #         chains[(all_words[i], all_words[i+1])].append(all_words[i+2])
+    # return chains
 
 
 def make_text(chains):
