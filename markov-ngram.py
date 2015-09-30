@@ -40,10 +40,10 @@ def make_chains(text_string):
         for i in range(n):
             key += (all_words[i],)
         
-        if chains.get(key) is None:
-            chains[key] = [all_words[n]]
-        else:
+        if key in chains:
             chains[key].append(all_words[n])
+        else:
+            chains[key] = [all_words[n]]
 
         del all_words[0]
         key = ()
